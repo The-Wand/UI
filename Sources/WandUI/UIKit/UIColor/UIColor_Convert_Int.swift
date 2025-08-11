@@ -16,32 +16,24 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-@preconcurrency import XCTest
-
+#if canImport(UIKit)
+import UIKit.UIColor
 import Wand
 
-/// Test Unit
-//struct Unit {
-//
-//}
-
-extension TimeInterval {
-
-    static
-    let `default` = 4.2
-
+@inline(__always)
+postfix
+public
+func |<T: BinaryInteger>(color: T) -> UIColor {
+    color | 1
 }
 
-///Performance
-extension [XCTMetric] {
-
-    static
-    let `default`: Self = {[
-        XCTCPUMetric(),
-        XCTClockMetric(),
-        XCTMemoryMetric(),
-        XCTStorageMetric(),
-    ]}()
-
+@inline(__always)
+public
+func |<T: BinaryInteger>(color: T, alpha: CGFloat) -> UIColor {
+    UIColor(red:    CGFloat((color & 0xFF0000) >> 16) / 255.0,
+            green:  CGFloat((color & 0x00FF00) >> 8 ) / 255.0,
+            blue:   CGFloat((color & 0x0000FF)      ) / 255.0,
+            alpha:  alpha)
 }
+
+#endif

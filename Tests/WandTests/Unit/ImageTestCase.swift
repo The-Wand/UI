@@ -16,32 +16,30 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-@preconcurrency import XCTest
+#if canImport(UIKit)
+import UIKit
+import XCTest
 
+import WandUI
 import Wand
 
-/// Test Unit
-//struct Unit {
-//
-//}
+class ImageTestCase: XCTestCase {
 
-extension TimeInterval {
+    internal
+    let path = "https://www.apple.com/ac/structured-data/images/open_graph_logo.png"
 
-    static
-    let `default` = 4.2
+    internal
+    lazy
+    var url = URL(string: path)!
 
-}
+    internal
+    lazy
+    var image: UIImage? = url|
 
-///Performance
-extension [XCTMetric] {
-
-    static
-    let `default`: Self = {[
-        XCTCPUMetric(),
-        XCTClockMetric(),
-        XCTMemoryMetric(),
-        XCTStorageMetric(),
-    ]}()
+    internal
+    lazy
+    var inSize = image!.size
 
 }
+
+#endif

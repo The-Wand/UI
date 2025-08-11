@@ -1,15 +1,12 @@
 // swift-tools-version: 5.6
-
 ///
-/// Copyright © 2020-2024 El Machine 🤖
-/// https://el-machine.com/
+/// Copyright 2020 Alexander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
 /// You may obtain a copy of the License at
 ///
-/// 1) .LICENSE
-/// 2) https://apache.org/licenses/LICENSE-2.0
+///     http://www.apache.org/licenses/LICENSE-2.0
 ///
 /// Unless required by applicable law or agreed to in writing, software
 /// distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,13 +15,12 @@
 /// limitations under the License.
 ///
 /// Created by Alex Kozin
-/// 2020 El Machine
+/// El Machine 🤖
 
 import PackageDescription
 
 let package = Package(
-    name: "Wand",
-    defaultLocalization: "ru",
+    name: "WandUI",
 
     platforms: [
         .iOS(.v14),
@@ -34,20 +30,23 @@ let package = Package(
     ],
 
     products: [
-        .library(name: "Wand", targets: ["Wand"])
+        .library(name: "WandUI", targets: ["WandUI"])
     ],
 
     dependencies: [
-        .package(url: "https://github.com/el-machine/Any.git", from: "1.0.0")
+        .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.1") ),
+        .package(url: "https://github.com/The-Wand/Wand.git", .upToNextMajor(from: "2.0.7") ),
     ],
 
     targets: [
-        .target(name: "Wand"),
+
+        .target(name: "WandUI", dependencies: ["Wand"] ),
         .testTarget(name: "wandTests", dependencies:
                         [
-                            "Wand",
+                            "WandUI",
                             .product(name: "Any_", package: "Any")
                         ]
                    )
+
     ]
 )

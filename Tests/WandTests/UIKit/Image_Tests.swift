@@ -16,32 +16,39 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import Foundation
-@preconcurrency import XCTest
+#if canImport(UIKit) && !os(watchOS)
+import UIKit.UIImage
 
+import Any_
+import WandFoundation
 import Wand
 
-/// Test Unit
-//struct Unit {
-//
-//}
+import XCTest
 
-extension TimeInterval {
+final
+class Image_Tests: ImageTestCase {
 
-    static
-    let `default` = 4.2
+    override
+    func setUpWithError() throws {
+        guard image == nil else {
+            return
+        }
+    }
+
+    @MainActor
+    func test_Image_Round() {
+        let e = expectation()
+
+        image | .round(to: CGFloat.random(in: 11...inSize.height/2) ) { (rounded: UIImage) in
+
+            //TODO: if rounded.isRounded() {
+            e.fulfill()
+
+        }
+
+        waitForExpectations()
+    }
 
 }
 
-///Performance
-extension [XCTMetric] {
-
-    static
-    let `default`: Self = {[
-        XCTCPUMetric(),
-        XCTClockMetric(),
-        XCTMemoryMetric(),
-        XCTStorageMetric(),
-    ]}()
-
-}
+#endif
