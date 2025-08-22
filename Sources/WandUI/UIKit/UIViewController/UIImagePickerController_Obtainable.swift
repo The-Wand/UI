@@ -43,7 +43,7 @@ extension UIImagePickerController: Obtainable {
         let delegate = wand.add(Delegate())
         
         let picker = wand.add(Self())
-        picker.allowsEditing = false
+        picker.allowsEditing = false //TODO: .get
         picker.delegate = delegate
 
         let type: String
@@ -85,7 +85,8 @@ extension UIImagePickerController {
 public
 extension Core.Error {
 
-    static func imagePicker(_ code: Int, reason: String? = nil) -> Error {
+    static
+    func imagePicker(_ code: Int, reason: String? = nil) -> Error {
         Self(code: code, reason: reason ?? "")
     }
 
