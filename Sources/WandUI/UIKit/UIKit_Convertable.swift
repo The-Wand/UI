@@ -20,38 +20,6 @@
 import UIKit
 import Wand
 
-///IndexPath
-extension Array {
-    
-    static public postfix func |(p: Self) -> [IndexPath] {
-        (0..<p.count)|
-    }
-}
-
-extension Range where Bound == Int {
-
-    static public postfix func |(p: Self) -> [IndexPath] {
-        p.map {
-            IndexPath(row: $0, section: 0)
-        }
-    }
-
-}
-
-extension ClosedRange where Bound == Int {
-
-    static public postfix func |(p: Self) -> [IndexPath] {
-        p.map {
-            IndexPath(row: $0, section: 0)
-        }
-    }
-
-}
-
-public postfix func |(piped: (row: Int, section: Int)) -> IndexPath {
-    IndexPath(row: piped.row, section: piped.section)
-}
-
 //UIEdgeInsets
 public postfix func |(piped: (top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat)) -> UIEdgeInsets {
     UIEdgeInsets(top: piped.top,
