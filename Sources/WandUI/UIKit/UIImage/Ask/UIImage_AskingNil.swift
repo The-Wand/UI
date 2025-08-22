@@ -16,8 +16,10 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(UIKit) && !os(watchOS)
+#if canImport(PhotosUI) && !os(watchOS)
+import PhotosUI
 import UIKit.UIImage
+
 import Wand
 
 extension Image: AskingNil, Wanded {
@@ -47,7 +49,7 @@ extension Image: AskingNil, Wanded {
 
         #if os(iOS)
             //Request for a first time
-            let source: UIImagePickerController = wand.get()
+            let source: PHPickerViewController = wand.get()
             source.presentOnVisible()
         #endif
         
@@ -58,3 +60,40 @@ extension Image: AskingNil, Wanded {
 }
 
 #endif
+
+@discardableResult
+@inline(__always)
+public
+prefix
+func | (handler: @escaping ([UIImage])->() ) -> Core {
+    Core() | handler
+}
+
+@discardableResult
+@inline(__always)
+public
+func | (count: Int, handler: @escaping ([UIImage])->() ) -> Core {
+    Core(count) | handler
+}
+
+@discardableResult
+@inline(__always)
+public
+func | (wand: Core, handler: @escaping ([UIImage])->() ) -> Core {
+
+    let ask = Ask.one(handler: handler) //TODO: Core 3.0
+
+    //Save ask
+    guard wand.append(ask: ask, check: true) else {
+        return wand
+    }
+
+    #if os(iOS)
+        //Request for a first time
+        let source: PHPickerViewController = wand.get()
+        source.presentOnVisible()
+    #endif
+
+    return wand
+
+}

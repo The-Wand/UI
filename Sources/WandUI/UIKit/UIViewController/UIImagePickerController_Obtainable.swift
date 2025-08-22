@@ -82,14 +82,4 @@ extension UIImagePickerController {
     
 }
 
-public
-extension Core.Error {
-
-    static
-    func imagePicker(_ code: Int, reason: String? = nil) -> Error {
-        Self(code: code, reason: reason ?? "")
-    }
-
-}
-
 #endif
