@@ -20,7 +20,6 @@
 import UIKit.UIImage
 
 import Any_
-import WandFoundation
 import Wand
 
 import XCTest
