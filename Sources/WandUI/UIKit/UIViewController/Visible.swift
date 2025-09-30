@@ -67,13 +67,8 @@ extension UITabBarController {
 
 }
 
-public 
+public
 extension UIApplication {
-
-    @inline(__always)
-    var visibleViewController: UIViewController? {
-        visibleWindow?.rootViewController?.visible
-    }
 
     @inline(__always)
     var rootViewController: UIViewController? {
@@ -81,9 +76,14 @@ extension UIApplication {
     }
 
     @inline(__always)
-    var visibleWindow: UIWindow? {
-        if #available(iOS 13, tvOS 13, *) {
+    var visibleViewController: UIViewController? {
+        visibleWindow?.visibleViewController
+    }
 
+    @inline(__always)
+    var visibleWindow: UIWindow? {
+
+        if #available(iOS 13, tvOS 13, *) {
             let scene = UIApplication.shared.connectedScenes.first {
                 ($0 as? UIWindowScene)?.activationState == .foregroundActive
             } as? UIWindowScene
@@ -92,6 +92,17 @@ extension UIApplication {
         } else {
             return keyWindow
         }
+    }
+
+}
+
+public
+extension UIWindow {
+
+    @inline(__always)
+    public
+    var visibleViewController: UIViewController? {
+        rootViewController?.visible
     }
 
 }
