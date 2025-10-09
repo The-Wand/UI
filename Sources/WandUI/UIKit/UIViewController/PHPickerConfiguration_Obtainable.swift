@@ -15,8 +15,6 @@
 ///
 /// Created by Alex Kozin
 /// El Machine 🤖
-///
-/// 
 
 #if canImport(PhotosUI) && !os(watchOS)
 import PhotosUI
