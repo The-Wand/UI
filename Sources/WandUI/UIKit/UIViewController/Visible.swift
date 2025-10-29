@@ -111,6 +111,14 @@ extension UIWindow {
 
     @inline(__always)
     public
+    static
+    var visible: UIWindow? {
+        UIApplication.shared.visibleWindow
+    }
+
+
+    @inline(__always)
+    public
     var visibleViewController: UIViewController? {
         rootViewController?.visible
     }

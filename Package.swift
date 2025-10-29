@@ -36,17 +36,19 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.1") ),
         .package(url: "https://github.com/The-Wand/Wand.git", .upToNextMajor(from: "2.0.11") ),
+        .package(url: "https://github.com/The-Wand/Foundation.git", .upToNextMajor(from: "2.0.11") ),
     ],
 
     targets: [
-
-        .target(name: "WandUI", dependencies: ["Wand"] ),
+        .target(name: "WandUI", dependencies: [
+            "Wand",
+            .product(name: "WandFoundation", package: "Foundation")
+        ] ),
         .testTarget(name: "wandTests", dependencies:
                         [
                             "WandUI",
                             .product(name: "Any_", package: "Any")
                         ]
                    )
-
     ]
 )

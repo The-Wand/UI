@@ -11,6 +11,15 @@
       }
     },
     {
+      "identity" : "foundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/The-Wand/Foundation.git",
+      "state" : {
+        "revision" : "b2164acca54142445194ddfbcec6b1da762ef5e0",
+        "version" : "2.0.11"
+      }
+    },
+    {
       "identity" : "wand",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/The-Wand/Wand.git",
