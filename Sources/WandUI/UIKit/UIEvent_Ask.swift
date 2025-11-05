@@ -17,10 +17,9 @@
 /// El Machine 🤖
 
 #if canImport(UIKit)
-import Foundation
+@_exported
 import UIKit
-
-import Wand
+@_exported
 import WandFoundation
 
 extension UIEvent.EventSubtype: AskingNil, @retroactive Wanded {
