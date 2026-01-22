@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/The-Wand/Foundation.git",
       "state" : {
-        "revision" : "b2164acca54142445194ddfbcec6b1da762ef5e0",
-        "version" : "2.0.11"
+        "revision" : "d2bde1f85dee30f5556761381c01c7f81909d9a6",
+        "version" : "2.0.12"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/The-Wand/Wand.git",
       "state" : {
-        "revision" : "dc59d75e9eeca7d5709da4c066e6beccc5007c9b",
-        "version" : "2.0.11"
+        "revision" : "e22c561918686522f49c0daf9dfd7e9b889e31c6",
+        "version" : "2.0.13"
       }
     }
   ],
