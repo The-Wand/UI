@@ -39,7 +39,6 @@ extension UIEvent.EventSubtype: AskingNil, @retroactive Wanded {
         } else {
 
             //Looking for the key window
-
             core.put(UIWindow.didBecomeKeyNotification)
             core | { (notification: Notification) in
                 if let window = notification.object as? UIWindow {

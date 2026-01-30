@@ -19,9 +19,6 @@
 #if canImport(UIKit)
 import UIKit.UIImage
 
-public
-typealias Image = UIImage
-
 import Wand
 
 /// Convert

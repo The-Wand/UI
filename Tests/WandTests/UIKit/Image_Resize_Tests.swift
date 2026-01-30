@@ -47,7 +47,7 @@ class Image_Resize_Tests: ImageTestCase {
 
         let calculated =  round( inSize.width / (inSize.height / dimension) )
 
-        image | .fill(to: size) { (out: UIImage) in
+        image | .fill(to: size) { (out: UI.Image) in
 
             let size = out.size
             if

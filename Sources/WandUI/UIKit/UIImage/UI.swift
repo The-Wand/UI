@@ -16,38 +16,21 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-#if canImport(UIKit) && !os(watchOS)
-import UIKit.UIImage
+#if canImport(CoreLocation)
+@_exported
+import CoreLocation
 
-import Any_
-import Wand
+//typealias Location              = CLLocation
+//typealias AuthorizationStatus   = CLAuthorizationStatus
 
-import XCTest
+struct UI {
 
-final
-class Image_Tests: ImageTestCase {
-
-    override
-    func setUpWithError() throws {
-        guard image == nil else {
-            return
-        }
-    }
-
-    @MainActor
-    func test_Image_Round() {
-        let e = expectation()
-
-        image | .round(to: CGFloat.random(in: 11...inSize.height/2) ) { (rounded: Image) in
-
-            //TODO: if rounded.isRounded() {
-            e.fulfill()
-
-        }
-
-        waitForExpectations()
-    }
+    public
+    typealias Image = UIImage
 
 }
+
+public
+typealias Image = UIImage
 
 #endif
