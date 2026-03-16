@@ -39,7 +39,17 @@ struct ContentView: View {
             Image(systemName: "wand.and.stars")
             Text("Hello, Wand|")
         }.onAppear() {
-            
+
+
+//            |.every { (motion: UIEvent.EventSubtype) in
+//
+//                guard motion == .motionShake else {
+//                    return
+//                }
+//
+//                
+//            }
+
         }
     }
 
